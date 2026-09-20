@@ -2,85 +2,96 @@
 
 Path: `beat-1-sandbox/unit-1/selection.md`
 
-Record of the issue carried into Unit 2, and of the evaluation runs that produced
-`eval-run.txt`. This file is graded at the path above; a copy kept anywhere else in
-the repository is not read.
-
-Complete every labelled field below. Each is graded on its own; content placed under the
-wrong label is not graded.
-
 ---
 
 ## Selected issue
 
 **Issue link**
 
-[The individual Path Review issue page. A link to the repository or the issue list
-does not satisfy this field.]
+https://github.com/codepath/pathreview-ai301-fa26-s3/issues/72
 
 **Verdict output**
 
-[Your skill's live-mode output for this issue, pasted verbatim and ending with the
-fenced JSON verdict block. A summary does not satisfy this field.]
+Active project — pass: the repository is not archived, and its five latest main-branch commits include three dated 2026-09-16.
 
-**The verdict must record `accept` for this issue.** Choose an issue your own skill
-accepts. If your skill rejects every candidate you try, that is a signal about your
-rubric rather than about the issues: revise it and re-run — retries are unlimited and a
-partial re-run costs about $0.20 — or run the skill on different candidates. Output
-recording `reject` for the issue you chose earns no credit for this field.
+Contribution policy — pass: `docs/CONTRIBUTING.md` describes the course contribution workflow and contains no restriction against AI-assisted work.
 
-```
-paste the output here, including the closing JSON block
+Bounded change — pass: the issue identifies one failure mode, the expected fail-closed behavior, two relevant files, and a covering xfail test to enable.
+
+Available to claim — pass: GitHub shows no assignee, relationship, branch, pull request, or work-in-progress comment. The Path Review house rule would also ignore classmates' claim comments.
+
+Maintainer path — pass: the issue author, Andrew Burke, authored all three main-branch commits dated 2026-09-16 and supplied the relevant files, expected behavior, and estimated effort.
+
+Fit summary: accept. This is the strongest fit because it is a 1–2 hour Python bug fix with an existing regression test and a clear security behavior.
+
+```json
+{
+  "item": "https://github.com/codepath/pathreview-ai301-fa26-s3/issues/72",
+  "checks": [
+    {
+      "name": "Active project",
+      "grade": "pass",
+      "evidence": "The repository is not archived, and three of its five latest main-branch commits are dated 2026-09-16."
+    },
+    {
+      "name": "Contribution policy",
+      "grade": "pass",
+      "evidence": "docs/CONTRIBUTING.md defines the course workflow and states no restriction against AI-assisted contributions."
+    },
+    {
+      "name": "Bounded change",
+      "grade": "pass",
+      "evidence": "Issue #72 specifies malformed hashes, return False as the expected behavior, core/security.py and tests/unit/test_security.py, and removal of one xfail marker."
+    },
+    {
+      "name": "Available to claim",
+      "grade": "pass",
+      "evidence": "The issue has no assignee, relationship, development branch, pull request, or work-in-progress comment."
+    },
+    {
+      "name": "Maintainer path",
+      "grade": "pass",
+      "evidence": "Issue author Andrew Burke also authored the repository's three latest commits and provided concrete implementation and test guidance."
+    }
+  ],
+  "verdict": "accept"
+}
 ```
 
 ---
 
 ## Eval iterations
 
-Quote source text directly in each field below. Paraphrase does not satisfy them.
-
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+1. `agreement: 20/20 scored items  (bar: 18/20: PASS)`
+
+This was the only completed run. Codex executed the rubric directly because the saved Claude OAuth session was expired; `eval-run.txt` records that substitution rather than claiming to be a Sonnet harness run.
 
 **Issue analysis**
 
-[One scored issue, identified by id (`issue-01` through `issue-20`; the `calib-`
-issues are not scored). State your rubric's decision, the gold label, and the
-reasoning that produced your rubric's result.]
+`issue-12` — my rubric decided `reject`; the gold label was `reject`. The bundle's policy says, `We do not accept AI-generated code or documentation.` The project was active, the issue was bounded, and nobody held a current claim, but that explicit prohibition failed the required Contribution policy check and therefore forced rejection.
 
 **Check rationale**
 
-[One check from the `rubric.md` uploaded to `tools/issue-select/`, quoted as it is
-currently written, with the reasoning behind its current form.]
+Contribution policy: `Pass when the repository permits the planned contribution workflow or states no policy. Fail when the policy prohibits AI-generated code or documentation, or otherwise makes this course's AI-assisted contribution workflow ineligible. A policy that permits assistive AI with human review passes.`
+
+I kept the distinction between a ban and a human-review requirement because this course uses AI assistance but still expects the student to understand, test, and own every change. The check rejects a genuinely incompatible repository without excluding projects that allow responsible assistive use.
 
 **Trade-offs**
 
-[What the quoted check gives up. Any one of these is a complete answer: an issue whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+This check rejects `issue-12` even though it passes the liveness, scope, and availability checks. I accept that trade-off because choosing an otherwise excellent issue is still a poor decision when the required course workflow conflicts with the repository's explicit contribution policy.
 
 ---
 
 ## Selection rationale
 
-Graded on whether all three are answered, in your own words. Not on how good the
-reasoning is, and not on length — a short honest answer to each earns the full marks.
-This is also the basis for the claim comment you write in Unit 2.
-
 **Selection rationale**
 
-[Answer all three:
-
-1. The issue's fit to your interests and to the time available.
-2. What the verdict identified correctly, and what you weighed that the rubric could
-   not.
-3. The anticipated difficulty in claiming it.]
+1. Issue #72 fits my Python experience and the available time. It is estimated at 1–2 hours, names the implementation and test files, and already has an xfail regression test that defines completion.
+2. The verdict correctly identified an active project, a permitted workflow, a bounded change, and no blocking claim. Beyond the rubric, I weighed the usefulness of learning a fail-closed security pattern and the low setup risk of a focused unit-tested change.
+3. Claiming should be straightforward. The issue currently has no assignee or pull request, and Path Review explicitly allows classmates to work on the same issue. The harder part will be confirming the exact passlib exception boundary and preserving `False` for every malformed stored-hash case without masking unrelated errors.
 
 ---
 
-Related paths: `eval-run.txt` in this directory; your skill's files in
-`tools/issue-select/`.
+Related paths: `eval-run.txt` in this directory; the skill files in `tools/issue-select/`.
